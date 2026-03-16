@@ -1,67 +1,36 @@
-# WiFi Login Pages proof repo
+# WiFi login pages prototype notes
 
-This repo is the evidence layer for a fact-based OpenWISP GSoC 2026 application focused on `openwisp-wifi-login-pages`.
+## What this repo contains
 
-## Purpose
+This repo collects the notes and validation for my OpenWISP WiFi modernization prototype branches.
 
-- keep archaeology, RCA, verification, comparison, and complete reports per workstream
-- track overlap with active upstream PRs and existing own PRs
-- attach screenshots, GIFs, and validation logs once code proof branches exist
-- strengthen the final proposal with public, inspectable prototype evidence
+## Implemented branches
 
-## Workstreams
+- `proof-272-registration-redirect`: first redirect-ownership slice for issue `#272`
+- `proof-314-header-unification`: header HTML cleanup for issue `#314`
+- `proof-918-status-surgical-slice`: small `Status` refactor for issue `#918`
+- `proof-integration-smoke`: stacked branch used to check that the three implemented slices still work together
 
-- `react19-rtl` -> issue `#870`
-- `issue-272` -> redirect decomposition from `OrganizationWrapper`
-- `issue-314` -> header HTML unification
-- `issue-918` -> surgical `Status` refactor
-- `issue-947` -> RFC 8908 captive portal API support
+## Analysis-only tracks
 
-## Prior evidence already available
+- `proof-react19-followup`: notes around the React 18.3 -> 19 path after PR `#1006`
+- `proof-947-rfc8908-prototype`: notes around RFC 8908 constraints and why I left that work out of the implemented set
 
-- openwisp-wifi-login-pages PR `#1061`
-- openwisp-wifi-login-pages PR `#1062`
-- openwisp-utils PR `#620`
-- openwisp-users PR `#492`
+## Validation
 
-These are referenced as prior evidence, not as the base for the whole proof effort.
+- fresh `master` browser baseline: 9 of 10 suites passed
+- reproduced baseline failure on `master`: `browser-test/password-expired.test.js`
+- `#272` has direct unit and browser validation
+- the integration branch passes the targeted unit suites plus the focused browser slice I used for the implemented work
+- details are in [validation.md](validation.md)
 
-## Structure
+## Files
 
-- `artifacts/<workstream>/` -> archaeology and verification packets
-- `branch-map.md` -> local proof branch layout and intended ownership
-- `baseline-validation-summary.md` -> current install/build/test classification on fresh `master`
-- `browser-validation-plan.md` -> runbook for the full browser-test baseline
-- `integration-validation-summary.md` -> stacked proof-branch coexistence notes
-- `overlap-matrix.md` -> issue/PR overlap status
-
-
-
-## Current environment notes
-
-- Node / Python: collected separately during baseline validation
-- Firefox: present as macOS app bundle, not on PATH (`/Applications/Firefox.app/Contents/MacOS/firefox`)
-- Geckodriver: present (`/opt/homebrew/bin/geckodriver`)
-- Docker for browser-test stack: ready - daemon reachable
-- openwisp-radius checkout: present - <local Radius checkout>
-
-Current browser-test status:
-
-- fresh `master` baseline: 9 / 10 browser suites passed
-- reproduced baseline failure: `browser-test/password-expired.test.js`
-- implemented proof surface on the integration branch:
-  - `browser-test/registration.test.js`: PASS
-  - `browser-test/login.test.js`: PASS
-  - `browser-test/language-change.test.js`: PASS
-  - `browser-test/password-change.test.js`: PASS
-
-Browser validation is now strong enough to support the implemented proof slices. Remaining browser coverage outside these flows should still be treated as broader repo baseline work, not as proof-branch fallout.
-
-## Current proof status
-
-- `issue-272`: implemented and locally verified on `proof-272-registration-redirect` @ `d03c86b3873d1526bf14ca13fd618ae657e38979`
-- `issue-314`: implemented and locally verified on `proof-314-header-unification` @ `3c13d499e8c6053e2679f9ff0de5a8b194e8af0e`
-- `issue-918`: implemented and locally verified on `proof-918-status-surgical-slice` @ `17e0a904cae43cce3f3614eb6df21f3fc0fcc9a1`
-- `react19-rtl`: comparison/gap report completed; no duplicate local migration branch started beyond baseline
-- `issue-947`: blocker-aware comparison/design report completed; no speculative code branch started beyond baseline
-- `proof-integration`: stacked local coexistence proof recorded in `integration-validation-summary.md` @ `42a73e4808196a418968400906602cab7cf9e294`
+- [published-branches.md](published-branches.md): public branch names and short descriptions
+- [validation.md](validation.md): what I ran and what I trust
+- [overlap-notes.md](overlap-notes.md): how these branches relate to active upstream work
+- [artifacts/issue-272/notes.md](artifacts/issue-272/notes.md): redirect slice notes
+- [artifacts/issue-314/notes.md](artifacts/issue-314/notes.md): header notes
+- [artifacts/issue-918/notes.md](artifacts/issue-918/notes.md): `Status` slice notes
+- [artifacts/react19-rtl/notes.md](artifacts/react19-rtl/notes.md): React follow-up notes
+- [artifacts/issue-947/notes.md](artifacts/issue-947/notes.md): RFC 8908 notes
