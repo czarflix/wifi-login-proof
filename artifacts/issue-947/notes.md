@@ -2,32 +2,30 @@
 
 ## Context
 
-Issue `#947` is the RFC 8908 captive portal API track. The issue itself says it needs more discussion and is not suited for beginner contributors. That warning matches what I found when I read through it.
+Issue `#947` is the RFC 8908 captive portal API track. While rechecking the upstream history, I found that [PR `#945`](https://github.com/openwisp/openwisp-wifi-login-pages/pull/945) had already added a basic internal captive portal API route and that it was later removed as unused. A later client-side follow-up, [PR `#1004`](https://github.com/openwisp/openwisp-wifi-login-pages/pull/1004), was closed.
 
-This is not a feature I wanted to sketch by guessing.
+That history matters because the right follow-up is not “put the old endpoint back.” The cleaner missing slice is the smaller client-side, opt-in path the issue already describes: per-organization URL, short timeout, explicit fallback, and no behavior change when it is off.
 
-## What is already in progress upstream
+## What I changed
 
-There is no active PR in the current repo state, but there was an earlier attempt that was closed. The issue text already narrows the safe contract quite a lot:
+I implemented a bounded follow-up branch for that missing slice:
 
-- optional feature
-- short timeout
-- configurable URL
-- documentation required
+- added optional `captive_portal_api` config with `enabled`, `url`, and `timeout`
+- mapped that config into `Status`
+- added a small RFC 8908 probe helper that sends `Accept: application/captive+json`
+- when the response says `captive: false`, the page switches to internet mode and skips radius-usage loading in the same pass
+- when the feature is disabled, errors, times out, or returns unexpected data, the current behavior stays unchanged
+- documented the new config in the settings docs
 
-## What I concluded
+## How I checked it
 
-I left this as an analysis-only track.
+- direct `Status` test path: `./node_modules/.bin/jest --runInBand --runTestsByPath client/components/status/status.test.js`
+- `./run-qa-checks`
 
-What seems safe so far:
+This is still a bounded client-side prototype. I used mocked tests for the RFC 8908 cases and did not turn it into a larger browser-flow project.
 
-- it should be opt-in
-- it should not change current behavior when disabled or unreachable
-- the timeout and fallback behavior need to be explicit
-- the consuming flows need to be agreed before code is written
+## Open notes
 
-## Why I am not presenting this as implemented work
-
-- the product contract is still the hard part here
-- a code branch without that contract would look speculative
-- for the proposal, this belongs in stretch scope unless mentors explicitly want it in the guaranteed set
+- this branch does not restore the removed internal endpoint from `#945`
+- it stays smaller than the closed `#1004` attempt by focusing only on the client-side follow-up needed by `Status`
+- I still do not present `#947` as guaranteed project scope in the proposal

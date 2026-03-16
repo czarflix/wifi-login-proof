@@ -9,18 +9,19 @@ This repo collects the notes and validation for my OpenWISP WiFi modernization p
 - `proof-272-registration-redirect`: first redirect-ownership slice for issue `#272`
 - `proof-314-header-unification`: header HTML cleanup for issue `#314`
 - `proof-918-status-surgical-slice`: small `Status` refactor for issue `#918`
+- `proof-947-captive-portal-api-followup`: opt-in RFC 8908 client-side follow-up for issue `#947`
 - `proof-integration-smoke`: stacked branch used to check that the three implemented slices still work together
 
 ## Analysis-only tracks
 
 - `react19-rtl`: notes around the React 18.3 -> 19 path after PR `#1006`
-- `issue-947`: notes around RFC 8908 constraints and why I left that work out of the implemented set
 
 ## Validation
 
 - fresh `master` browser baseline: 9 of 10 suites passed
 - reproduced baseline failure on `master`: `browser-test/password-expired.test.js`
 - `#272` has direct unit and browser validation
+- `#947` has targeted `Status` tests and repo QA validation
 - the integration branch passes the targeted unit suites plus the focused browser slice I used for the implemented work
 - details are in [validation.md](validation.md)
 
@@ -32,5 +33,5 @@ This repo collects the notes and validation for my OpenWISP WiFi modernization p
 - [artifacts/issue-272/notes.md](artifacts/issue-272/notes.md): redirect slice notes
 - [artifacts/issue-314/notes.md](artifacts/issue-314/notes.md): header notes
 - [artifacts/issue-918/notes.md](artifacts/issue-918/notes.md): `Status` slice notes
+- [artifacts/issue-947/notes.md](artifacts/issue-947/notes.md): RFC 8908 follow-up notes
 - [artifacts/react19-rtl/notes.md](artifacts/react19-rtl/notes.md): React follow-up notes
-- [artifacts/issue-947/notes.md](artifacts/issue-947/notes.md): RFC 8908 notes

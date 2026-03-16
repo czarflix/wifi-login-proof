@@ -19,6 +19,7 @@ The full local `yarn coverage` run on `master` is still not a reliable branch ga
 | `proof-272-registration-redirect` | `registration.test.js`, `organization-wrapper.test.js`, `browser-test/registration.test.js`, `./run-qa-checks` | passed |
 | `proof-314-header-unification` | `header.test.js`, changed-file lint, `./run-qa-checks` | passed |
 | `proof-918-status-surgical-slice` | `status.test.js`, changed-file lint, `./run-qa-checks` | passed |
+| `proof-947-captive-portal-api-followup` | direct `Status` test path with mocked RFC 8908 cases, `./run-qa-checks` | passed |
 | `proof-integration-smoke` | targeted unit suites for registration, wrapper, header, and status; focused browser slice for registration, login, language change, and password change; `./run-qa-checks` | passed |
 
 ## Browser checks
@@ -39,4 +40,4 @@ That is enough for me to say the implemented surface is locally validated withou
 
 - The `password-expired` browser failure still exists on fresh `master`.
 - The full local coverage run is still too noisy to use as the main decision point.
-- The React 19 and RFC 8908 tracks are analysis-only in this repo, so there is no implementation validation for them here.
+- The React 19 track is still analysis-only in this repo, so there is no implementation validation for it here.

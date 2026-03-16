@@ -33,6 +33,14 @@ This area is clearly review-sensitive. I kept my branch smaller than the open PR
 
 There was no active PR in this area when I prepared these notes, so I used it as the cleanest place to build a first implemented slice.
 
+### RFC 8908 follow-up
+
+- issue `#947`
+- merged PR: `#945`
+- closed PR: `#1004`
+
+I did not treat `#947` as a blank-slate feature. The repo already had a merged internal endpoint in `#945`, and that endpoint was later removed as unused. My follow-up branch stays narrower than both of those earlier attempts: it only adds the opt-in client-side config and RFC 8908 probe needed by `Status`, and it does not restore the removed server path.
+
 ## Existing PRs I already had open
 
 - `#1061`
