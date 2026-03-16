@@ -13,8 +13,8 @@ This repo collects the notes and validation for my OpenWISP WiFi modernization p
 
 ## Analysis-only tracks
 
-- `proof-react19-followup`: notes around the React 18.3 -> 19 path after PR `#1006`
-- `proof-947-rfc8908-prototype`: notes around RFC 8908 constraints and why I left that work out of the implemented set
+- `react19-rtl`: notes around the React 18.3 -> 19 path after PR `#1006`
+- `issue-947`: notes around RFC 8908 constraints and why I left that work out of the implemented set
 
 ## Validation
 
